@@ -1,8 +1,8 @@
 // block "label1" "label2"... {
-    // identifier = expression
+// identifier = expression
 // }
 
-output hello1 {
-    value = "Hello World 123"
+output "hello1" {
+  value = "Hello World 123"
 }
 

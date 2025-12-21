@@ -55,11 +55,22 @@ resource "aws_instance" "web" {
   }
 
   provisioner "local-exec" {
-    command = "echo 'at Create'"
+    on_failure = continue
+    command    = "echo 'at Create'"
   }
 
   provisioner "local-exec" {
-    when = destroy
+    when    = destroy
     command = "echo 'at delete'"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "echo 'hello girik' > /tmp/test.txt"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    script = "./testscript.sh"
   }
 }
