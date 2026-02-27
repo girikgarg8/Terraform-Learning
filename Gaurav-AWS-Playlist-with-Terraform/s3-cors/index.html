@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS Demo</title>
+  <style>
+    .fetched { margin-top: 0.5rem; padding: 1rem; border: 1px solid #ccc; background: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <h1>S3 CORS Demo</h1>
+  <button id="btn">Fetch from S3</button>
+  <div id="out"></div>
+  <script>
+    const S3_URL = 'http://my-static-website-testing-girik.s3-website.ap-south-1.amazonaws.com';
+    document.getElementById('btn').onclick = () => {
+      document.getElementById('out').innerHTML = '<p>Loading…</p>';
+      fetch(S3_URL)
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('out').innerHTML =
+            '<p><strong>Content from S3:</strong></p><div class="fetched">' + html + '</div>';
+        })
+        .catch(e => {
+          document.getElementById('out').innerHTML = '<p style="color:red">Error: ' + e.message + '</p>';
+        });
+    };
+  </script>
+</body>
+</html>
