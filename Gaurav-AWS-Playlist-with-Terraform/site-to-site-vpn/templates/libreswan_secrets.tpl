@@ -1,0 +1,1 @@
+${customer_gateway_ip} ${vpn_gateway_ip}: PSK "${preshared_key}"
