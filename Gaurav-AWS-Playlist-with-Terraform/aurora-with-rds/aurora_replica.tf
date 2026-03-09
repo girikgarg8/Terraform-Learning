@@ -40,10 +40,24 @@ resource "aws_rds_cluster" "replica" {
 resource "aws_rds_cluster_instance" "replica" {
   provider = aws.replica
 
-  identifier = "${var.cluster_identifier_replica}-instance"
+  identifier         = "${var.cluster_identifier_replica}-instance"
   cluster_identifier = aws_rds_cluster.replica.id
-  instance_class = var.aurora_instance_class
-  engine = aws_rds_cluster.replica.engine
-  engine_version = aws_rds_cluster.replica.engine_version
+  instance_class     = var.aurora_instance_class
+  engine             = aws_rds_cluster.replica.engine
+  engine_version     = aws_rds_cluster.replica.engine_version
+}
 
+# Promote replica cluster to standalone on destroy so the last instance can be deleted (AWS requirement).
+resource "null_resource" "replica_destroy_order" {
+  triggers = {
+    cluster_id = aws_rds_cluster.replica.id
+    region     = data.aws_region.replica.id
+  }
+
+  provisioner "local-exec" {
+    when    = destroy
+    command = "aws rds promote-read-replica-db-cluster --db-cluster-identifier ${self.triggers.cluster_id} --region ${self.triggers.region}"
+  }
+
+  depends_on = [aws_rds_cluster_instance.replica]
 }

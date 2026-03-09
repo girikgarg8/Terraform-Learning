@@ -16,6 +16,10 @@ data "aws_availability_zones" "replica" {
   state = "available"
 }
 
+data "aws_region" "replica" {
+  provider = aws.replica
+}
+
 # Default Aurora MySQL version for primary region (avoids invalid/deprecated version errors)
 data "aws_rds_engine_version" "aurora_mysql" {
   provider    = aws.primary
