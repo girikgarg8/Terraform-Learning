@@ -1,0 +1,5 @@
+region         = "ap-south-1"
+topic_name     = "my-notification-topic"
+email_endpoint = "your-email@example.com"
+sms_endpoint   = "+919876543210"
+https_endpoint = "https://example.com/webhook/sns"
