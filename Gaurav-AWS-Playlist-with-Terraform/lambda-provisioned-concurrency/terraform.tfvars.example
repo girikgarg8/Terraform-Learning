@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars and adjust.
+# region                   = "ap-south-1"
+# reserved_concurrency     = 0
+# provisioned_concurrency  = 1  # requires high enough account concurrent execution quota
