@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars (not committed if you use default .gitignore for *.tfvars)
+
+# After v1 and v2 both exist, enable 50/50 on alias "test":
+# test_traffic_split_enabled      = true
+# test_traffic_primary_version    = "1"
+# test_traffic_secondary_version = "2"
+# test_traffic_secondary_weight   = 0.5
+
+# Bump when promoting prod:
+# prod_alias_version = "2"
+
+# Change to publish new code / new version:
+# build_tag = "v2"
