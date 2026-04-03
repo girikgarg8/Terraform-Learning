@@ -2,8 +2,6 @@ resource "aws_api_gateway_rest_api" "main" {
   name = "playlist-rest"
 }
 
-# Deployment + stage - triggers MUST grow as you add slices
-
 resource "aws_api_gateway_deployment" "dev" {
   rest_api_id = aws_api_gateway_rest_api.main.id
   triggers = {
@@ -13,6 +11,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.mock.id,
       aws_api_gateway_method_response.mock_200.id,
       aws_api_gateway_integration_response.mock_200.id,
+      aws_api_gateway_resource.google.id,
+      aws_api_gateway_method.google_get.id,
+      aws_api_gateway_integration.google_http.id,
+      aws_api_gateway_method_response.google_200.id,
+      aws_api_gateway_integration_response.google_200.id,
     ]))
   }
 
@@ -22,8 +25,7 @@ resource "aws_api_gateway_deployment" "dev" {
 }
 
 resource "aws_api_gateway_stage" "dev" {
-  rest_api_id = aws_api_gateway_rest_api.main.id
+  rest_api_id   = aws_api_gateway_rest_api.main.id
   deployment_id = aws_api_gateway_deployment.dev.id
-  stage_name = "dev"
+  stage_name    = "dev"
 }
-
