@@ -57,6 +57,27 @@ env.txt
 ip_address.txt
 *.log
 
+# Terraform archive_file outputs (Lambda deployment packages)
+**/add_two_numbers.zip
+**/async_error.zip
+**/s3_trigger.zip
+**/alb_lambda.zip
+**/hello.zip
+**/hello_nonproxy_lambda.zip
+**/requests_in_zip.zip
+**/lambda_bundle/
+**/layer_build/
+**/requests_layer.zip
+**/code_only.zip
+**/custom_utils_layer.zip
+**/versioned.zip
+**/public_no_nat.zip
+**/private_with_nat.zip
+**/reserved_concurrency.zip
+**/provisioned_concurrency.zip
+**/lambda_destination.zip
+**/lambda_rds_connectivity.zip
+
 # macOS
 .DS_Store
 .AppleDouble
@@ -95,4 +116,3 @@ Desktop.ini
 # Terraform plugin cache
 .terraform.d/
 plugin-cache/
-

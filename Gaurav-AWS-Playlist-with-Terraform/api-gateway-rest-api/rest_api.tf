@@ -16,6 +16,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.google_http.id,
       aws_api_gateway_method_response.google_200.id,
       aws_api_gateway_integration_response.google_200.id,
+      aws_api_gateway_resource.lambda_path.id,
+      aws_api_gateway_method.lambda_get.id,
+      aws_api_gateway_integration.lambda_nonproxy.id,
+      aws_api_gateway_method_response.lambda_200.id,
+      aws_api_gateway_integration_response.lambda_200.id,
     ]))
   }
 
