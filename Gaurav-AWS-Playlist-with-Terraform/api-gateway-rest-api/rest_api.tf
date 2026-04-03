@@ -26,8 +26,6 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.ddb_query.id,
       aws_api_gateway_method_response.ddb_200.id,
       aws_api_gateway_integration_response.ddb_200.id,
-      # Integration template edits do not change resource ids; hash file so deploy picks up VTL changes.
-      filemd5("${path.module}/dynamodb_backend.tf"),
     ]))
   }
 
