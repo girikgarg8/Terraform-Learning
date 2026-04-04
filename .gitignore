@@ -75,6 +75,8 @@ ip_address.txt
 **/code_only.zip
 **/custom_utils_layer.zip
 **/versioned.zip
+**/versioned_v1_lambda.zip
+**/versioned_v2_lambda.zip
 **/public_no_nat.zip
 **/private_with_nat.zip
 **/reserved_concurrency.zip

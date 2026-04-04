@@ -61,6 +61,9 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_resource.auth_demo.id,
       aws_api_gateway_method.auth_demo_get.id,
       aws_api_gateway_integration.auth_demo_lambda.id,
+      aws_api_gateway_resource.versioned.id,
+      aws_api_gateway_method.versioned_get.id,
+      aws_api_gateway_integration.versioned_lambda.id,
     ]))
   }
 
@@ -70,7 +73,21 @@ resource "aws_api_gateway_deployment" "dev" {
 }
 
 resource "aws_api_gateway_stage" "dev" {
-  rest_api_id   = aws_api_gateway_rest_api.main.id
-  deployment_id = aws_api_gateway_deployment.dev.id
-  stage_name    = "dev"
+  rest_api_id     = aws_api_gateway_rest_api.main.id
+  deployment_id   = aws_api_gateway_deployment.dev.id
+  stage_name      = "dev"
+  # GET /versioned → test alias (50/50 v1 and v2).
+  variables = {
+    lambdaAlias = "test"
+  }
+}
+
+resource "aws_api_gateway_stage" "prod" {
+  rest_api_id     = aws_api_gateway_rest_api.main.id
+  deployment_id   = aws_api_gateway_deployment.dev.id
+  stage_name      = "prod"
+  # Same deployment as dev; stage variable points integration at prod alias (weighted v1/v2 when configured).
+  variables = {
+    lambdaAlias = "prod"
+  }
 }
