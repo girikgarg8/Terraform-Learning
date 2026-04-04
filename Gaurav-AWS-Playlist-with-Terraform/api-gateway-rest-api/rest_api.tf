@@ -26,6 +26,10 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.ddb_query.id,
       aws_api_gateway_method_response.ddb_200.id,
       aws_api_gateway_integration_response.ddb_200.id,
+      aws_api_gateway_resource.students.id,
+      aws_api_gateway_resource.student_id.id,
+      aws_api_gateway_method.student_get.id,
+      aws_api_gateway_integration.students_lambda.id,
     ]))
   }
 
