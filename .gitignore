@@ -65,6 +65,7 @@ ip_address.txt
 **/hello.zip
 **/hello_nonproxy_lambda.zip
 **/students_lambda.zip
+**/transform_lambda.zip
 **/requests_in_zip.zip
 **/lambda_bundle/
 **/layer_build/

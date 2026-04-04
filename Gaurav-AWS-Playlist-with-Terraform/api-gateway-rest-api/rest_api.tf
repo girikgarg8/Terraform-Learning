@@ -42,6 +42,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.forward_http.id,
       aws_api_gateway_method_response.forward_200.id,
       aws_api_gateway_integration_response.forward_200.id,
+      aws_api_gateway_resource.forward_lambda.id,
+      aws_api_gateway_method.forward_lambda_post.id,
+      aws_api_gateway_integration.forward_lambda.id,
+      aws_api_gateway_method_response.forward_lambda_200.id,
+      aws_api_gateway_integration_response.forward_lambda_200.id
     ]))
   }
 
