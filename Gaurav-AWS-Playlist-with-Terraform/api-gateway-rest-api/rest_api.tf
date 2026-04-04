@@ -52,7 +52,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.secure_mock.id,
       aws_api_gateway_method_response.secure_200.id,
       aws_api_gateway_integration_response.secure_200.id,
-      filemd5("${path.module}/iam_auth_api_gw.tf"),
+      aws_api_gateway_resource.keyed.id,
+      aws_api_gateway_method.keyed_get.id,
+      aws_api_gateway_integration.keyed_mock.id,
+      aws_api_gateway_method_response.keyed_200.id,
+      aws_api_gateway_integration_response.keyed_200.id,
     ]))
   }
 
