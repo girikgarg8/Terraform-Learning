@@ -37,6 +37,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.validate_mock.id,
       aws_api_gateway_method_response.validate_200.id,
       aws_api_gateway_integration_response.validate_200.id,
+      aws_api_gateway_resource.forward.id,
+      aws_api_gateway_method.forward_get.id,
+      aws_api_gateway_integration.forward_http.id,
+      aws_api_gateway_method_response.forward_200.id,
+      aws_api_gateway_integration_response.forward_200.id,
     ]))
   }
 
