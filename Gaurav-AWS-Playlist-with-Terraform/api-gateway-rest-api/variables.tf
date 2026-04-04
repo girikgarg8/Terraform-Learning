@@ -12,6 +12,11 @@ variable "backend_url" {
   }
 }
 
+variable "api_gateway_custom_domain_name" {
+  type        = string
+  default     = "demo.girikgarg.xyz"
+}
+
 variable "canary_demo_step" {
   type    = number
   default = 1

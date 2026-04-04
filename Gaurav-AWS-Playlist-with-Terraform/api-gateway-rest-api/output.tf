@@ -18,3 +18,8 @@ output "canary_demo_get_url" {
   value = local.canary_demo_stage_enabled ? "https://${aws_api_gateway_rest_api.main.id}.execute-api.${var.aws_region}.amazonaws.com/${aws_api_gateway_stage.canary_demo[0].stage_name}/canary-mock" : null
   description = "GET this URL after canary_demo_step >= 2. Roughly half the responses show backend stable vs canary (MOCK). See canary_demo_step variable."
 }
+
+output "custom_domain_dev_base_url" {
+  value       = "https://${var.api_gateway_custom_domain_name}"
+  description = "REST API via custom domain"
+}

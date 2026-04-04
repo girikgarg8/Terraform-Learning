@@ -69,6 +69,10 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.canary_demo.id,
       aws_api_gateway_method_response.canary_demo_200.id,
       aws_api_gateway_integration_response.canary_demo_200.id,
+      aws_api_gateway_method.custom_domain_root_get.id,
+      aws_api_gateway_integration.custom_domain_root.id,
+      aws_api_gateway_method_response.custom_domain_root_200.id,
+      aws_api_gateway_integration_response.custom_domain_root_200.id,
     ]))
   }
 
