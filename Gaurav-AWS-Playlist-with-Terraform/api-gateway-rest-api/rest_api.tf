@@ -57,6 +57,10 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_integration.keyed_mock.id,
       aws_api_gateway_method_response.keyed_200.id,
       aws_api_gateway_integration_response.keyed_200.id,
+      aws_api_gateway_authorizer.custom.id,
+      aws_api_gateway_resource.auth_demo.id,
+      aws_api_gateway_method.auth_demo_get.id,
+      aws_api_gateway_integration.auth_demo_lambda.id,
     ]))
   }
 
