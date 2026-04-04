@@ -30,6 +30,13 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_resource.student_id.id,
       aws_api_gateway_method.student_get.id,
       aws_api_gateway_integration.students_lambda.id,
+      aws_api_gateway_request_validator.full.id,
+      aws_api_gateway_model.user_body.id,
+      aws_api_gateway_resource.validate.id,
+      aws_api_gateway_method.validate_post.id,
+      aws_api_gateway_integration.validate_mock.id,
+      aws_api_gateway_method_response.validate_200.id,
+      aws_api_gateway_integration_response.validate_200.id,
     ]))
   }
 
