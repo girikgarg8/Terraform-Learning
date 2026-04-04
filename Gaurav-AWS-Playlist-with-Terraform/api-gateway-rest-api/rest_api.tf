@@ -64,6 +64,11 @@ resource "aws_api_gateway_deployment" "dev" {
       aws_api_gateway_resource.versioned.id,
       aws_api_gateway_method.versioned_get.id,
       aws_api_gateway_integration.versioned_lambda.id,
+      aws_api_gateway_resource.canary_demo.id,
+      aws_api_gateway_method.canary_demo_get.id,
+      aws_api_gateway_integration.canary_demo.id,
+      aws_api_gateway_method_response.canary_demo_200.id,
+      aws_api_gateway_integration_response.canary_demo_200.id,
     ]))
   }
 
