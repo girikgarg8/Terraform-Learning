@@ -1,0 +1,20 @@
+# Cognito managed domain
+aws_region              = "ap-south-1"
+root_domain             = "girikgarg.xyz"
+domain_mode             = "managed"
+cognito_domain_prefix   = "girik-demo-your-unique-suffix"
+custom_domain_host      = ""
+# Leave unset or "" for auto ARN from current account + root_domain
+# ses_domain_identity_arn = "arn:aws:ses:ap-south-1:123456789012:identity/girikgarg.xyz"
+demo_user_password      = "ChangeMe_Strong1!"
+# demo_user_gender      = null   # second apply: set to "male" etc.
+
+# Custom domain
+aws_region              = "ap-south-1"
+root_domain             = "girikgarg.xyz"
+domain_mode             = "custom"
+cognito_domain_prefix   = ""
+custom_domain_host      = "cognitodemo.girikgarg.xyz"
+# Leave unset or "" for auto ARN from current account + root_domain
+# ses_domain_identity_arn = "arn:aws:ses:ap-south-1:123456789012:identity/girikgarg.xyz"
+demo_user_password      = "ChangeMe_Strong1!"
